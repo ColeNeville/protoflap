@@ -7,10 +7,30 @@ Controls the welcome room Vestaboard directly, bypassing their cloud.
 
 ## Setup
 
+SSH into the Vestaboard using the root key, ie:
+
+```
+$ ssh -i ~/.ssh/vestaboard root@10.139.85.133
+```
+
+### Script
+
+Clone the script:
+
+```
+# git clone https://github.com/Protospace/protoflap.git
+```
+
+Test it:
+
+```
+# cd protoflap/
+# python protoflap.py
+```
 
 ### Supervisor
 
-Install supervisor:
+To run the script automatically, install supervisor:
 
 ```
 # apt install supervisor
@@ -40,5 +60,6 @@ Load changes:
 
 ```
 # supervisorctl reread; supervisorctl update
+# supervisorctl status
 ```
 
