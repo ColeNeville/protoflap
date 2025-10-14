@@ -2,7 +2,7 @@
 
 Controls the welcome room Vestaboard directly, bypassing their cloud.
 
-
+![a split flap display with the words "PROTOFLAP BY PROTOSPACE"](media/signpic.jpg)
 
 
 ## Setup
