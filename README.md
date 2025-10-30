@@ -69,7 +69,7 @@ Set config to:
 [program:protoflap]
 user=root
 directory=/root/protoflap
-command=/usr/bin/python /root/protoflap/protoflap.py
+command=/usr/bin/python -u /root/protoflap/protoflap.py
 stopsignal=INT
 stopasgroup=true
 killasgroup=true
