@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+print "Boot up..."
+
 from vestactrl import setup_digits, board_init_uart
 import textwrap
 import urllib2
 import json
 import time
+
+print "Importing complete."
 
 def send_sign(text):
     """
@@ -53,8 +57,10 @@ def poll_and_display():
     url = 'https://api.my.protospace.ca/stats/'
 
     while True:
+        time.sleep(5)
+
         try:
-            response = urllib2.urlopen(url)
+            response = urllib2.urlopen(url, timeout=5)
             data = json.load(response)
             message = data.get('vestaboard')
 
@@ -63,13 +69,16 @@ def poll_and_display():
                 send_sign(message.encode('utf-8'))
                 last_message = message
 
-        except (urllib2.URLError, ValueError, KeyError) as e:
+        except KeyboardInterrupt:
+            break
+        except BaseException as e:
             print "Error: {}".format(e)
-
-        time.sleep(5)
 
 
 if __name__ == '__main__':
     # Initialize communication with the board.
+    print "Initializing uart..."
     board_init_uart()
+
+    print "Starting polling loop..."
     poll_and_display()
